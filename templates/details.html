@@ -1,0 +1,187 @@
+    <!DOCTYPE html>
+    <html lang="en">
+      <head>
+        <title>Fraud Detection Application</title>
+          <style>
+          /* Popup container */
+.popup {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+
+}
+
+/* The actual popup (appears on top) */
+.popup .popuptext {
+    visibility: hidden;
+    width: 160px;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 8px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: 707px;
+}
+
+/* Popup arrow */
+
+
+/* Toggle this class when clicking on the popup container (hide and show the popup) */
+.popup .show {
+    visibility: visible;
+    -webkit-animation: fadeIn 1s;
+    animation: fadeIn 1s
+}
+
+/* Add animation (fade in the popup) */
+@-webkit-keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+@keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity:1 ;}
+}
+
+
+          </style>
+
+
+        <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+
+        <link href="http://getbootstrap.com/examples/jumbotron-narrow/jumbotron-narrow.css" rel="stylesheet">
+        <link href="../static/css/signup.css" rel="stylesheet">
+        <script src="../static/js/jquery-1.11.2.js"></script>
+        <script src="../static/js/submitForm.js"></script>
+      </head>
+
+      <body>
+          <div class="popup" >
+      <span class="popuptext" id="myPopup">{% with messages = get_flashed_messages()%}
+            {%if messages%}
+                {%for message in messages%}
+                    <h3>{{message}}</h3>
+                {% endfor%}
+            {%endif%}
+          {%endwith%}  </span>
+    </div>
+
+
+        <div class="container">
+          <div class="header">
+            <nav>
+            </nav>
+            <h3 class="text-muted">Fraud Deletection Application</h3>
+          </div>
+
+          <div class="jumbotron">
+            <h3>Fraud Detection Using Other Features</h3>
+            <form class="form-signin">
+            <label>Car Maker</label>&nbsp;&nbsp;&nbsp;&nbsp;
+            <select name="make" class="align" style="margin-left: 50px;">
+              <option value="Honda">Honda</option>
+              <option value="Toyota">Toyota</option>
+              <option value="Mazda">Mazda</option>
+              <option value="Ford">Ford</option>
+              <option value="Accura">Accura</option>
+              <option value="Dodge">Dodge</option>
+            </select><br><br>
+            <label for="accidentArea">Accident Area</label>&nbsp;&nbsp;
+            <select name="area" class="align" style="margin-left: 32px; width: 74px;">
+              <option value="Urban">Urban</option>
+              <option value="Rural">Rural</option>
+            </select><br><br>
+            <label for="gender">Sex</label>&nbsp;&nbsp;&nbsp;
+            <select name="sex" class="align" style="margin-left: 100px; width:75px">
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+            </select><br></br>
+            <label for="Status">Marital Status</label>&nbsp;&nbsp;&nbsp;
+            <select name="maritalStatus" class="align" style="margin-left: 28px; width:75px">
+              <option value="Single">Single</option>
+              <option value="Married">Married</option>
+              <option value="Divorced">Divorced</option>
+              <option value="Widow">Widow</option>
+            </select><br></br>
+            <label for="age">Age</label>&nbsp;&nbsp;&nbsp;
+            <input type="text" name="age" id="age"placeholder="Age" style="margin-left: 98px; width:75px"><br></br>
+            <label for="fault">Fault</label>&nbsp;&nbsp;&nbsp;
+            <select name="fault" style="margin-left: 92px; width:75px">
+              <option value="Policy Holder">Policy Holder</option>
+              <option value="Third Party">Third Party</option>
+            </select><br></br>
+            <label for="type">Policy Type</label>&nbsp;&nbsp;&nbsp;
+            <select name="policyType" style="margin-left: 48px; width:75px">
+              <option value="Sedan - All Peril">Sedan - All Perils</option>
+              <option value="Sedan - Collision">Sedan - Collision</option>
+              <option value="Sedan - Liability">Sedan - Liability</option>
+              <option value="Sport - Collision">Sport - Collision</option>
+              <option value="Utility - All Perils">Utility - All Perils</option>
+              <option value="Utility  - Collision">Utility  - Collision</option>
+            </select><br></br>
+            <label for="category">Vehicle Category</label>&nbsp;&nbsp;&nbsp;
+            <select name="vehicleCategory" style="margin-left: 7px; width:75px">
+              <option value="Sedan">Sedan</option>
+              <option value="Sport">Sport</option>
+              <option value="Utility">Utility</option>
+            </select><br></br>
+            <label for="price">Vehicle Price</label>&nbsp;&nbsp;&nbsp;
+            <select name="vehiclePrice" style="margin-left: 38px; width:75px">
+              <option value="less than 20000">less than 20000</option>
+              <option value="20000 to 29000">20000 to 29000</option>
+              <option value="30000 to 39000">30000 to 39000</option>
+              <option value="40000 to 59000 ">40000 to 59000 </option>
+              <option value="60000 to 69000">60000 to 69000</option>
+              <option value="more than 69000">more than 69000</option>
+            </select><br></br>
+            <label for="claims">Past No. of Claims</label>&nbsp;&nbsp;&nbsp;
+            <select name="noOfClaims" style="margin-left: -1px; width:75px">
+              <option value="none">none</option>
+              <option value="1">1</option>
+              <option value="2 to 4">2 to 4</option>
+              <option value="more than 4">more than 4</option>
+            </select><br></br>
+            <label for="preport">Police Report</label>&nbsp;&nbsp;&nbsp;
+            <select name="policeReport" style="margin-left: 32px; width:75px">
+              <option value="No">No</option>
+              <option value="yes">Yes</option>
+            </select><br></br>
+            <label for="wpresent">Witness Present</label>&nbsp;&nbsp;&nbsp;
+            <select name="witnessPresent" style="margin-left: 12px; width:75px">
+              <option value="No">No</option>
+              <option value="yes">Yes</option>
+            </select><br></br>
+            <label for="cars">No. of Cars</label>&nbsp;&nbsp;&nbsp;
+            <select name="noOfCars" style="margin-left: 47px; width:75px">
+              <option value="1 vehicle">1 vehicle</option>
+              <option value="2 vehicle">2 vehicle</option>
+              <option value="3 to 4">3 to 4</option>
+              <option value="5 to 8">5 to 8</option>
+            </select><br></br>
+            <label for="bpolicy">Base Policy</label>&nbsp;&nbsp;&nbsp;
+            <select name="basePolicy" style="margin-left: 47px; width:75px">
+              <option value="All perils">All perils</option>
+              <option value="Collision">Collision</option>
+              <option value="Liability">Liability</option>
+            </select><br></br>
+            <button id="btnSubmit" class="btn btn-lg btn-primary btn-block" type="button" onclick="myFunction()">Submit</button>
+            </form>
+          </div>
+
+
+        </div>
+<script>
+// When the user clicks on <div>, open the popup
+function myFunction() {
+    var popup = document.getElementById("myPopup");
+    popup.classList.toggle("show");
+}
+</script>
+      </body>
+
+    </html>
